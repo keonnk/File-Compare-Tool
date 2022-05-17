@@ -48,7 +48,7 @@ namespace File_Compare
             this.addFile1Button.FlatAppearance.BorderSize = 0;
             this.addFile1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addFile1Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addFile1Button.ForeColor = System.Drawing.SystemColors.Control;
+            this.addFile1Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.addFile1Button.Location = new System.Drawing.Point(12, 105);
             this.addFile1Button.Name = "addFile1Button";
             this.addFile1Button.Size = new System.Drawing.Size(80, 21);
@@ -72,7 +72,7 @@ namespace File_Compare
             this.addFile2Button.FlatAppearance.BorderSize = 0;
             this.addFile2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addFile2Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addFile2Button.ForeColor = System.Drawing.SystemColors.Control;
+            this.addFile2Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.addFile2Button.Location = new System.Drawing.Point(12, 156);
             this.addFile2Button.Name = "addFile2Button";
             this.addFile2Button.Size = new System.Drawing.Size(80, 20);
@@ -108,7 +108,7 @@ namespace File_Compare
             this.compareButton.FlatAppearance.BorderSize = 0;
             this.compareButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.compareButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.compareButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.compareButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.compareButton.Location = new System.Drawing.Point(228, 192);
             this.compareButton.Name = "compareButton";
             this.compareButton.Size = new System.Drawing.Size(74, 34);
