@@ -32,15 +32,20 @@ namespace File_Compare
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.addFile1Button = new System.Windows.Forms.Button();
             this.file1TextBox = new System.Windows.Forms.TextBox();
-            this.addFile2Button = new System.Windows.Forms.Button();
-            this.file2TextBox = new System.Windows.Forms.TextBox();
             this.Title = new System.Windows.Forms.Label();
             this.compareButton = new System.Windows.Forms.Button();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.AddDirectory = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Multiselect = true;
             // 
             // addFile1Button
             // 
@@ -49,46 +54,22 @@ namespace File_Compare
             this.addFile1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addFile1Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addFile1Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.addFile1Button.Location = new System.Drawing.Point(12, 105);
+            this.addFile1Button.Location = new System.Drawing.Point(3, 3);
             this.addFile1Button.Name = "addFile1Button";
-            this.addFile1Button.Size = new System.Drawing.Size(80, 21);
+            this.addFile1Button.Size = new System.Drawing.Size(80, 20);
             this.addFile1Button.TabIndex = 0;
             this.addFile1Button.Text = "Add File 1";
             this.addFile1Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.addFile1Button.UseVisualStyleBackColor = false;
-            this.addFile1Button.Click += new System.EventHandler(this.addFile1Button_Click);
+            this.addFile1Button.Click += new System.EventHandler(this.DynamicButton_Click);
             // 
             // file1TextBox
             // 
-            this.file1TextBox.Location = new System.Drawing.Point(98, 105);
+            this.file1TextBox.Location = new System.Drawing.Point(89, 3);
             this.file1TextBox.Name = "file1TextBox";
             this.file1TextBox.ReadOnly = true;
             this.file1TextBox.Size = new System.Drawing.Size(204, 20);
             this.file1TextBox.TabIndex = 1;
-            // 
-            // addFile2Button
-            // 
-            this.addFile2Button.BackColor = System.Drawing.Color.DarkOrchid;
-            this.addFile2Button.FlatAppearance.BorderSize = 0;
-            this.addFile2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addFile2Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addFile2Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.addFile2Button.Location = new System.Drawing.Point(12, 156);
-            this.addFile2Button.Name = "addFile2Button";
-            this.addFile2Button.Size = new System.Drawing.Size(80, 20);
-            this.addFile2Button.TabIndex = 2;
-            this.addFile2Button.Text = "Add File 2";
-            this.addFile2Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.addFile2Button.UseVisualStyleBackColor = false;
-            this.addFile2Button.Click += new System.EventHandler(this.addFile2Button_Click);
-            // 
-            // file2TextBox
-            // 
-            this.file2TextBox.Location = new System.Drawing.Point(98, 156);
-            this.file2TextBox.Name = "file2TextBox";
-            this.file2TextBox.ReadOnly = true;
-            this.file2TextBox.Size = new System.Drawing.Size(204, 20);
-            this.file2TextBox.TabIndex = 3;
             // 
             // Title
             // 
@@ -109,7 +90,7 @@ namespace File_Compare
             this.compareButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.compareButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.compareButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.compareButton.Location = new System.Drawing.Point(228, 192);
+            this.compareButton.Location = new System.Drawing.Point(104, 41);
             this.compareButton.Name = "compareButton";
             this.compareButton.Size = new System.Drawing.Size(74, 34);
             this.compareButton.TabIndex = 5;
@@ -117,22 +98,55 @@ namespace File_Compare
             this.compareButton.UseVisualStyleBackColor = false;
             this.compareButton.Click += new System.EventHandler(this.compareButton_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.addFile1Button);
+            this.flowLayoutPanel1.Controls.Add(this.file1TextBox);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(316, 32);
+            this.flowLayoutPanel1.TabIndex = 6;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // AddDirectory
+            // 
+            this.AddDirectory.BackColor = System.Drawing.Color.DarkOrchid;
+            this.AddDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddDirectory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AddDirectory.Location = new System.Drawing.Point(3, 41);
+            this.AddDirectory.Name = "AddDirectory";
+            this.AddDirectory.Size = new System.Drawing.Size(95, 34);
+            this.AddDirectory.TabIndex = 7;
+            this.AddDirectory.Text = "Add Directory";
+            this.AddDirectory.UseVisualStyleBackColor = false;
+            this.AddDirectory.Click += new System.EventHandler(this.addDirectory_Click);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel1);
+            this.flowLayoutPanel2.Controls.Add(this.AddDirectory);
+            this.flowLayoutPanel2.Controls.Add(this.compareButton);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(19, 51);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(325, 105);
+            this.flowLayoutPanel2.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(316, 261);
-            this.Controls.Add(this.compareButton);
+            this.ClientSize = new System.Drawing.Size(366, 184);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.Title);
-            this.Controls.Add(this.file2TextBox);
-            this.Controls.Add(this.addFile2Button);
-            this.Controls.Add(this.file1TextBox);
-            this.Controls.Add(this.addFile1Button);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "File Compare Tool";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,10 +157,12 @@ namespace File_Compare
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button addFile1Button;
         private System.Windows.Forms.TextBox file1TextBox;
-        private System.Windows.Forms.Button addFile2Button;
-        private System.Windows.Forms.TextBox file2TextBox;
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.Button compareButton;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button AddDirectory;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
 
