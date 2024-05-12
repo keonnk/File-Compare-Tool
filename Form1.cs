@@ -15,7 +15,9 @@ namespace File_Compare
 {
     public partial class Form1 : Form
     {
-        //ArrayList buttons = new ArrayList();
+
+        public List<KeyValuePair<Button, TextBox>> buttonTextBoxList = new List<KeyValuePair<Button, TextBox>>(); //To keep track of dynamic Button TextBox pairs
+        public int rowCount = 1;
         public List<String> files = new List<String>();
 
         public Form1()
@@ -32,7 +34,8 @@ namespace File_Compare
             {
                 if (!File.Exists(files[i]))
                 {
-                    MessageBox.Show("Error, one of the files can't be found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("One of the files can't be found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 byte[] bytes = File.ReadAllBytes(files[i]);
@@ -43,6 +46,12 @@ namespace File_Compare
                     String hashString = Encoding.Default.GetString(hash);
                     checksumHashes.Add(hashString);
                 }
+            }
+
+            if(files.Count == 0)
+            {
+                MessageBox.Show("All fields are empty, please add file(s) before comparing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             String exampleChecksum = checksumHashes.First(); //Will be used to compare with all the others
@@ -59,18 +68,23 @@ namespace File_Compare
             MessageBox.Show("Files are all identical!", "File Compare", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void Form1_Load(object sender, EventArgs e) {}
+        private void Form1_Load(object sender, EventArgs e) 
+        {
+            buttonTextBoxList.Add(new KeyValuePair<Button, TextBox>(addFilesButton1, TextBox1)); //Adding initial row of components from form designer
+        }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) {}
 
         /**
-         * Dynamically generate new buttons to add new directories
+         * Dynamically generate new buttons to add new directories, along with corresponding textbox beside it
          */
         private void addDirectory_Click(object sender, EventArgs e)
         {
-            flowLayoutPanel1.Size = new Size(flowLayoutPanel1.Width, flowLayoutPanel1.Height + 20);
-            flowLayoutPanel2.Size = new Size(flowLayoutPanel2.Width, flowLayoutPanel2.Height + 20);
-            this.Size = new Size(this.Width, this.Height + 20);
+            rowCount++;
+
+            flowLayoutPanel1.Size = new Size(flowLayoutPanel1.Width, flowLayoutPanel1.Height + 27);
+            flowLayoutPanel2.Size = new Size(flowLayoutPanel2.Width, flowLayoutPanel2.Height + 27);
+            this.Size = new Size(this.Width, this.Height + 27);
 
             Button button = new Button();
 
@@ -79,40 +93,51 @@ namespace File_Compare
             button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            //button.Location = new System.Drawing.Point(3, 3);
-            button.Name = "addFile1Button";
-            button.Size = new System.Drawing.Size(80, 21);
+            button.Name = "addFilesButton" + rowCount;
+            button.Size = new System.Drawing.Size(140, 20);
             button.TabIndex = 0;
-            button.Text = "Add File 1";
+            button.Text = "Add Files From Directory " + rowCount;
             button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             button.UseVisualStyleBackColor = false;
 
             button.Click += new System.EventHandler(this.DynamicButton_Click);
 
-
             TextBox textBox = new TextBox();
-            //this.file1TextBox.Location = new System.Drawing.Point(89, 3);
-            this.file1TextBox.Name = "file1TextBox";
-            this.file1TextBox.ReadOnly = true;
-            this.file1TextBox.Size = new System.Drawing.Size(204, 20);
-            this.file1TextBox.TabIndex = 1;
+            textBox.Name = "TextBox" + rowCount;
+            textBox.ReadOnly = true;
+            textBox.Size = new System.Drawing.Size(204, 20);
+            textBox.TabIndex = 1;
 
             flowLayoutPanel1.Controls.Add(button);
             flowLayoutPanel1.Controls.Add(textBox);
+
+            buttonTextBoxList.Add(new KeyValuePair<Button, TextBox>(button, textBox));
         }
 
         private void DynamicButton_Click(object sender, EventArgs e)
         {
-            //Button btn = sender as Button;
+            Button btn = sender as Button;
 
             openFileDialog.ShowDialog();
 
-            for(int i= 0; i < openFileDialog.FileNames.Length; i++)
+            TextBox textbox = buttonTextBoxList.Where(kvp => kvp.Key.Equals(btn)).First().Value;
+
+            for(int i=0; i<openFileDialog.FileNames.Length; i++)
             {
+                textbox.Text += openFileDialog.FileNames[i] + ", ";
                 files.Add(openFileDialog.FileNames[i]);
             }
+        }
 
-            //TODO: Put file names in respective textbox
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            for(int i=0; i<buttonTextBoxList.Count; i++)
+            {
+                buttonTextBoxList[i].Value.Text = ""; //Clear all text boxes
+            }
+
+            //buttonTextBoxList.Clear();
+            files.Clear();
         }
     }
 }
