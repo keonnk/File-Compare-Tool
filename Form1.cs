@@ -88,7 +88,7 @@ namespace File_Compare
 
             Button button = new Button();
 
-            button.BackColor = System.Drawing.Color.DarkOrchid;
+            button.BackColor = System.Drawing.Color.Azure;
             button.FlatAppearance.BorderSize = 0;
             button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

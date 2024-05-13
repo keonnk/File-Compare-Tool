@@ -53,7 +53,7 @@ namespace File_Compare
             // 
             // addFilesButton1
             // 
-            this.addFilesButton1.BackColor = System.Drawing.Color.DarkOrchid;
+            this.addFilesButton1.BackColor = System.Drawing.Color.Azure;
             this.addFilesButton1.FlatAppearance.BorderSize = 0;
             this.addFilesButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addFilesButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -89,12 +89,12 @@ namespace File_Compare
             // 
             // compareButton
             // 
-            this.compareButton.BackColor = System.Drawing.Color.DarkOrchid;
+            this.compareButton.BackColor = System.Drawing.Color.PaleGreen;
             this.compareButton.FlatAppearance.BorderSize = 0;
             this.compareButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.compareButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.compareButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.compareButton.Location = new System.Drawing.Point(104, 41);
+            this.compareButton.Location = new System.Drawing.Point(112, 41);
             this.compareButton.Name = "compareButton";
             this.compareButton.Size = new System.Drawing.Size(74, 34);
             this.compareButton.TabIndex = 5;
@@ -114,12 +114,13 @@ namespace File_Compare
             // 
             // AddDirectory
             // 
-            this.AddDirectory.BackColor = System.Drawing.Color.DarkOrchid;
+            this.AddDirectory.BackColor = System.Drawing.Color.Azure;
             this.AddDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.AddDirectory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.AddDirectory.Location = new System.Drawing.Point(3, 41);
             this.AddDirectory.Name = "AddDirectory";
-            this.AddDirectory.Size = new System.Drawing.Size(95, 34);
+            this.AddDirectory.Size = new System.Drawing.Size(103, 34);
             this.AddDirectory.TabIndex = 7;
             this.AddDirectory.Text = "Add Directory";
             this.AddDirectory.UseVisualStyleBackColor = false;
@@ -138,12 +139,12 @@ namespace File_Compare
             // 
             // resetButton
             // 
-            this.resetButton.BackColor = System.Drawing.Color.DarkOrchid;
+            this.resetButton.BackColor = System.Drawing.Color.Tomato;
             this.resetButton.FlatAppearance.BorderSize = 0;
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.resetButton.Location = new System.Drawing.Point(184, 41);
+            this.resetButton.Location = new System.Drawing.Point(192, 41);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(74, 34);
             this.resetButton.TabIndex = 8;
