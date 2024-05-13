@@ -129,7 +129,7 @@ namespace File_Compare
             }
         }
 
-        private void resetButton_Click(object sender, EventArgs e)
+        private void clearButton_Click(object sender, EventArgs e)
         {
             for(int i=0; i<buttonTextBoxList.Count; i++)
             {

@@ -148,9 +148,9 @@ namespace File_Compare
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(74, 34);
             this.resetButton.TabIndex = 8;
-            this.resetButton.Text = "Reset";
+            this.resetButton.Text = "Clear";
             this.resetButton.UseVisualStyleBackColor = false;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            this.resetButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // Form1
             // 
